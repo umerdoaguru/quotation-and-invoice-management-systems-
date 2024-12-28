@@ -1,0 +1,964 @@
+
+Quotataion form test
+
+// import React from "react";
+
+// function Homepage() {
+//   return (
+//     <>
+//       <div className="container">
+//         <div className="row mb-4 p-4 border-bottom">
+//           <div className="col-12">
+//             <h5 className="mb-4 text-center">
+//               Quotation Generater Management System :
+//             </h5>
+//             <div className="col-lg-12 mb-3">
+//                     <input type="text" className="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" name='Quotataion-name ' placeholder="Quotataion Name "  required/>
+//                     </div>
+
+                  
+//             <div className="row">
+//               <div className="col-lg-6 mb-3">
+//                 <label
+//                   className="form-check-label"
+//                   htmlFor="service_lift_available"
+//                 >
+//                   Services{" "}
+//                 </label>
+//                 <select
+//                   className="form-select"
+//                   id="service_lift_available"
+//                   name="service_lift_available"
+//                   required
+//                 >
+//                   <option value="">Select</option>
+//                   <option value="1">SEO</option>
+//                   <option value="2">SMO</option>
+//                   <option value="3">SMM</option>
+//                   <option value="5">Website Maintenance</option>
+//                   <option value="6">SMM</option>
+//                   Social Media Marketing (SMM)
+//                   <option value="">Social Media Optimization (SMO)</option>
+//                   <option value="">Search Engine Optimization (SEO)</option>
+//                   <option value="">Website Design & Development</option>
+
+//                     <option value="">Software Development</option>
+//                     <option value="">Graphic & Logo Designing</option>
+//                     <option value="">Video Editing</option>
+//                     <option value="">Mobile Application Development (Android & IOS)</option>
+//                     <option value="">Bulk WhatsApp</option>
+//                     <option value="">YouTube Optimization </option>
+//                     <option value="">Google My Business Assist</option>
+//                     <option value="">Google Reviews</option>
+//                     <option value="">Leads Generation</option>
+//                     <option value="">Facebook Paid Ads</option>
+//                     <option value="">Google PPC Ads</option>
+//                     <option value="">ontent Writing </option>
+//                     <option value="">Data Science & Engineering</option>
+//                     <option value="">Cloud Computing</option>
+//                     <option value="">Staffing</option>
+//                 </select>
+//               </div>
+
+//               <div className="col-lg-6 mb-3">
+//                 <label
+//                   className="form-check-label"
+//                   htmlFor="common_visitor_parking"
+//                 >
+//                 Service Description
+//                 </label>
+//                 <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='Quotataion-name ' placeholder="  Service Description "  required/>
+//                     </div>
+            
+//               <div className="col-lg-6 mb-3">
+//                 <label className="form-check-label" htmlFor="main_road_facing">
+//                  Actual Price 
+//                 </label>
+//                 <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='Quotataion-name ' placeholder="  Service Description "  required/>
+
+//               </div>
+//               <div className="col-lg-6 mb-3">
+//                 <label className="form-check-label" htmlFor="working_24_7">
+//        Offer Price 
+//                 </label>
+//                 <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='Quotataion-name ' placeholder="  Service Description "  required/>
+
+//               </div>
+//               <div className="btn">
+//                 <button className="btn btn-success">Sumbit</button>
+//               </div>
+             
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Homepage;
+
+
+
+this multiple filed code
+//import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import cogoToast from "cogo-toast";
+// import { useNavigate } from "react-router-dom";
+
+// function Table() {
+//   const navigate = useNavigate();
+//   const [serviceslist, setServiceslist] = useState([]);
+//   const [quotations, setQuotations] = useState([
+//     { quotation_name: "", fields: [{}] },
+//   ]);
+
+//   const handleChange = (e, quotationIndex, fieldIndex) => {
+//     if (fieldIndex === undefined) {
+//       // Handle changes in main quotation fields
+//       const newQuotations = [...quotations];
+//       newQuotations[quotationIndex] = {
+//         ...newQuotations[quotationIndex],
+//         [e.target.name]: e.target.value,
+//       };
+//       setQuotations(newQuotations);
+//     } else {
+//       // Handle changes in nested fields
+//       const newFields = [...quotations[quotationIndex].fields];
+//       newFields[fieldIndex] = {
+//         ...newFields[fieldIndex],
+//         [e.target.name]: e.target.value,
+//       };
+
+//       const newQuotations = [...quotations];
+//       newQuotations[quotationIndex] = {
+//         ...newQuotations[quotationIndex],
+//         fields: newFields,
+//       };
+
+//       setQuotations(newQuotations);
+//     }
+//   };
+
+//   const getServicelist = async () => {
+//     try {
+//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       console.log(res.data.services);
+//       setServiceslist(res.data.services);
+//     } catch (error) {
+//       console.log("error", error);
+//     }
+//   };
+
+//   const AddNewField = (quotationIndex) => {
+//     setQuotations((prevQuotations) => {
+//       const newFields = [...prevQuotations[quotationIndex].fields, {}];
+//       const newQuotations = [...prevQuotations];
+//       newQuotations[quotationIndex] = {
+//         ...newQuotations[quotationIndex],
+//         fields: newFields,
+//       };
+//       return newQuotations;
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//         quotations,
+//       });
+
+//       console.log(response.data.user.id);
+
+//       if (response.status === 200) {
+//         // Show success message using cogo-toast
+//         cogoToast.success("Quotation added successfully", {
+//           position: "top-center",
+//         });
+//         // Add any additional logic or state updates upon successful submission
+//         // Reset input fields after successful submission
+//         setQuotations([{ quotation_name: "", fields: [{}] }]);
+//         navigate(`/print/${response.data.user.id}`);
+//       } else {
+//         // Show error message using cogo-toast
+//         cogoToast.error("Failed to add quotation", { position: "top-center" });
+//       }
+
+//       // Handle success, show a success message or redirect the user
+//       cogoToast.success("Quotation added successfully");
+//     } catch (error) {
+//       console.error("Error adding quotation:", error);
+//       // Handle error, show an error message
+//       cogoToast.error("Failed to add quotation");
+//     }
+//   };
+
+//   useEffect(() => {
+//     getServicelist();
+//   }, []);
+
+//   return (
+//     <>
+//       <div className="container mt-5">
+//         <div className="row mb-4 p-4 border-bottom">
+//           <div className="col-12">
+//             <h5 className="mb-4 text-center">
+//               Quotation Generator Management System:
+//             </h5>
+
+//             {quotations.map((quotation, quotationIndex) => (
+//               <div key={quotationIndex}>
+//                 <input
+//                   type="text"
+//                   className="form-control text-center"
+//                   name="quotation_name"
+//                   placeholder="Quotation Name"
+//                   onChange={(e) => handleChange(e, quotationIndex)}
+//                   value={quotation.quotation_name}
+//                   required
+//                 />
+
+//                 {/* Render other main quotation fields here */}
+
+//                 {quotation.fields.map((field, fieldIndex) => (
+//                   <div key={fieldIndex}>
+//                     <div className="container mt-5">
+//                       <div className="row mb-4 p-4 border-bottom">
+//                         <div className="col-12">
+//                           <div className="row">
+//                             <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-3">
+//                               <label
+//                                 className="form-check-label"
+//                                 htmlFor="serviceType"
+//                               >
+//                                 Services
+//                               </label>
+//                               <select
+//                                 className="form-select"
+//                                 id="serviceType"
+//                                 name="service_type"
+//                                 onChange={(e) => handleChange(e)}
+//                                 value={quotation.service_type}
+//                                 required
+//                               >
+//                                 <option value="">Select</option>
+//                                 {serviceslist.map((item, key) => (
+//                                   <option key={key} value={item.service_name}>
+//                                     {item.service_name}
+//                                   </option>
+//                                 ))}
+//                               </select>
+//                             </div>
+
+//                             <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+//                               <label
+//                                 className="form-check-label"
+//                                 htmlFor="serviceDescription"
+//                               >
+//                                 Service Description
+//                               </label>
+//                               <textarea
+//                                 type="text"
+//                                 className="form-control"
+//                                 id="serviceDescription"
+//                                 name="service_description"
+//                                 placeholder="Service Description"
+//                                 onChange={(e) => handleChange(e)}
+//                                 value={quotation.service_description}
+//                                 required
+//                               />
+//                             </div>
+
+//                             <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                               <label
+//                                 className="form-check-label"
+//                                 htmlFor="actualPrice"
+//                               >
+//                                 Actual Price
+//                               </label>
+//                               <input
+//                                 type="text"
+//                                 className="form-control"
+//                                 id="actualPrice"
+//                                 name="actual_price"
+//                                 placeholder="Actual Price"
+//                                 onChange={(e) => handleChange(e)}
+//                                 value={quotation.actual_price}
+//                                 required
+//                               />
+//                             </div>
+//                             <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                               <label
+//                                 className="form-check-label"
+//                                 htmlFor="offerPrice"
+//                               >
+//                                 Offer Price
+//                               </label>
+//                               <input
+//                                 type="text"
+//                                 className="form-control"
+//                                 id="offerPrice"
+//                                 name="offer_price"
+//                                 placeholder="Offer Price"
+//                                 onChange={(e) => handleChange(e)}
+//                                 value={quotation.offer_price}
+//                                 required
+//                               />
+//                             </div>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 ))}
+
+//                 <div className="row justify-content-end">
+//                   <div className="col-1">
+//                     <button
+//                       className="btn btn-success"
+//                       onClick={() => AddNewField(quotationIndex)}
+//                     >
+//                       +
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+
+//             <form onSubmit={handleSubmit}>
+//               <div className="btn">
+//                 <button type="submit" className="btn btn-success">
+//                   Submit
+//                 </button>
+//               </div>
+//             </form>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Table;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import cogoToast from "cogo-toast";
+
+// function Table() {
+//   const [serviceslist, setServiceslist] = useState([]);
+//   const [quotation, setQuotation] = useState({
+//     quotation_name: "",
+//     fields: [{}],
+//   });
+//   const [fieldCount, setFieldCount] = useState(1);
+
+//   const handleChange = (e, fieldIndex) => {
+//     const newFields = [...quotation.fields];
+//     newFields[fieldIndex] = {
+//       ...newFields[fieldIndex],
+//       [e.target.name]: e.target.value,
+//     };
+//     setQuotation({ ...quotation, fields: newFields });
+//   };
+
+//   const getServicelist = async () => {
+//     try {
+//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       console.log(res.data.services);
+//       setServiceslist(res.data.services);
+//     } catch (error) {
+//       console.log("error", error);
+//     }
+//   };
+
+//   const AddNewField = () => {
+//     setQuotation((prevQuotation) => ({
+//       ...prevQuotation,
+//       fields: [...prevQuotation.fields, {}],
+//     }));
+//     setFieldCount((prevCount) => prevCount + 1);
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       // Assuming your server is running at https://quotation.queuemanagementsystemdg.com/
+//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//         quotation_name: quotation.quotation_name,
+//         service_type: quotation.service_type,
+//         service_description: quotation.service_description,
+//         actual_price: quotation.actual_price,
+//         offer_price: quotation.offer_price,
+//         fields: quotation.fields,
+//       });
+
+//       console.log(response.data);
+
+//       // Handle success, show a success message or redirect the user
+//       cogoToast.success("Quotation added successfully");
+//     } catch (error) {
+//       console.error("Error adding quotation:", error);
+//       // Handle error, show an error message
+//       cogoToast.error("Failed to add quotation");
+//     }
+//   };
+
+//   useEffect(() => {
+//     getServicelist();
+//   }, []);
+
+//   return (
+//     <>
+//       <div className="container mt-5">
+//         <div className="row mb-4 p-4 border-bottom">
+//           <div className="col-12">
+//             <h5 className="mb-4 text-center">
+//               Quotation Generator Management System:
+//             </h5>
+//             <div className="col-12 mb-3">
+//               <input
+//                 type="text"
+//                 className="form-control text-center"
+//                 id="quotationName"
+//                 aria-describedby="emailHelp"
+//                 name="quotation_name"
+//                 placeholder="Quotation Name"
+//                 onChange={(e) =>
+//                   setQuotation({
+//                     ...quotation,
+//                     [e.target.name]: e.target.value,
+//                   })
+//                 }
+//                 value={quotation.quotation_name}
+//                 required
+//               />
+//             </div>
+
+//             <div className="row">
+//               <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="serviceType">
+//                   Services
+//                 </label>
+//                 <select
+//                   className="form-select"
+//                   id="serviceType"
+//                   name="service_type"
+//                   onChange={handleChange}
+//                   value={quotation.service_type}
+//                   required
+//                 >
+//                   <option value="">Select</option>
+//                   {serviceslist.map((item, key) => (
+//                     <option key={key} value={item.service_name}>
+//                       {item.service_name}
+//                     </option>
+//                   ))}
+//                 </select>
+//               </div>
+
+//               <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label
+//                   className="form-check-label"
+//                   htmlFor="serviceDescription"
+//                 >
+//                   Service Description
+//                 </label>
+//                 <textarea
+//                   type="text"
+//                   className="form-control"
+//                   id="serviceDescription"
+//                   name="service_description"
+//                   placeholder="Service Description"
+//                   onChange={handleChange}
+//                   value={quotation.service_description}
+//                   required
+//                 />
+//               </div>
+
+//               <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="actualPrice">
+//                   Actual Price
+//                 </label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="actualPrice"
+//                   name="actual_price"
+//                   placeholder="Actual Price"
+//                   onChange={handleChange}
+//                   value={quotation.actual_price}
+//                   required
+//                 />
+//               </div>
+//               <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="offerPrice">
+//                   Offer Price
+//                 </label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="offerPrice"
+//                   name="offer_price"
+//                   placeholder="Offer Price"
+//                   onChange={handleChange}
+//                   value={quotation.offer_price}
+//                   required
+//                 />
+//               </div>
+//             </div>
+//             {[...Array(fieldCount)].map((_, index) => (
+//               <div className="row" key={index}>
+//                 {index !== 0 && (
+//                   <>
+//                     <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-3">
+//                       <label
+//                         className="form-check-label"
+//                         htmlFor={`serviceType${index}`}
+//                       >
+//                         Services
+//                       </label>
+//                       <select
+//                         className="form-select"
+//                         id={`serviceType${index}`}
+//                         name={`service_type${index}`}
+//                         onChange={(e) => handleChange(e, index)}
+//                         value={quotation.fields[index]?.service_type || ''}
+//                         required
+//                       >
+//                         <option value="">Select</option>
+//                         {serviceslist.map((item, key) => (
+//                           <option key={key} value={item.service_name}>
+//                             {item.service_name}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+
+//                     <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+//                       <label
+//                         className="form-check-label"
+//                         htmlFor={`serviceDescription${index}`}
+//                       >
+//                         Service Description
+//                       </label>
+//                       <textarea
+//                         type="text"
+//                         className="form-control"
+//                         id={`serviceDescription${index}`}
+//                         name={`service_description${index}`}
+//                         placeholder="Service Description"
+//                         onChange={(e) => handleChange(e, index)}
+//                         value={
+//                           quotation.fields[index]?.service_description || ''
+//                         }
+//                         required
+//                       />
+//                     </div>
+
+//                     <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                       <label
+//                         className="form-check-label"
+//                         htmlFor={`actualPrice${index}`}
+//                       >
+//                         Actual Price
+//                       </label>
+//                       <input
+//                         type="text"
+//                         className="form-control"
+//                         id={`actualPrice${index}`}
+//                         name={`actual_price${index}`}
+//                         placeholder="Actual Price"
+//                         onChange={(e) => handleChange(e, index)}
+//                         value={quotation.fields[index]?.actual_price || ''}
+//                         required
+//                       />
+//                     </div>
+//                     <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                       <label
+//                         className="form-check-label"
+//                         htmlFor={`offerPrice${index}`}
+//                       >
+//                         Offer Price
+//                       </label>
+//                       <input
+//                         type="text"
+//                         className="form-control"
+//                         id={`offerPrice${index}`}
+//                         name={`offer_price${index}`}
+//                         placeholder="Offer Price"
+//                         onChange={(e) => handleChange(e, index)}
+//                         value={quotation.fields[index]?.offer_price || ''}
+//                         required
+//                       />
+//                     </div>
+//                   </>
+//                 )}
+//               </div>
+//             ))}
+
+//             <div className="row justify-content-end">
+//               <div className="col-1">
+//                 <button className="btn btn-success" onClick={AddNewField}>
+//                   +
+//                 </button>
+//               </div>
+//             </div>
+
+//             <form onSubmit={handleSubmit}>
+//               <div className="btn">
+//                 <button type="submit" className="btn btn-success">
+//                   Submit
+//                 </button>
+//               </div>
+//             </form>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Table;
+
+// data is stored
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import cogoToast from "cogo-toast";
+// import { useNavigate } from "react-router-dom";
+
+// function Table() {
+//   const navigate = useNavigate();
+//   const [serviceslist, setServiceslist] = useState([]);
+//   const [quotation, setQuotation] = useState({
+//     quotation_name: "",
+//     service_type: "",
+//     service_description: "",
+//     actual_price: "",
+//     offer_price: "",
+//     fields: [{}],
+//   });
+//   const [fieldCount, setFieldCount] = useState(1);
+
+//   const handleChange = (e, fieldIndex) => {
+//     if (fieldIndex === undefined) {
+//       // Handle changes in main quotation fields
+//       setQuotation({
+//         ...quotation,
+//         [e.target.name]: e.target.value,
+//       });
+//     } else {
+//       // Handle changes in nested fields
+//       const newFields = [...quotation.fields];
+//       newFields[fieldIndex] = {
+//         ...newFields[fieldIndex],
+//         [e.target.name]: e.target.value,
+//       };
+//       setQuotation({ ...quotation, fields: newFields });
+//     }
+//   };
+
+//   const getServicelist = async () => {
+//     try {
+//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       console.log(res.data.services);
+//       setServiceslist(res.data.services);
+//     } catch (error) {
+//       console.log("error", error);
+//     }
+//   };
+
+// // const AddNewField = () => {
+// //     setQuotation((prevQuotation) => {
+// //       const newFields = [...prevQuotation.fields, {}];
+// //       return {
+// //         ...prevQuotation,
+// //         fields: newFields,
+// //       };
+// //     });
+// //     setFieldCount((prevCount) => prevCount + 1);
+// //   };
+
+// const AddNewField = () => {
+//     setQuotation((prevQuotation) => {
+//       const newFields = [...prevQuotation.fields, {}];
+//       return {
+//         ...prevQuotation,
+//         fields: newFields,
+//       };
+//     });
+//     setFieldCount((prevCount) => prevCount + 1);
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//         quotation_name: quotation.quotation_name,
+//         service_type: quotation.service_type,
+//         service_description: quotation.service_description,
+//         actual_price: quotation.actual_price,
+//         offer_price: quotation.offer_price,
+//         fields: quotation.fields,
+//       });
+
+//       console.log(response.data.user.id);
+
+//       if (response.status === 200) {
+//         // Show success message using cogo-toast
+//         cogoToast.success("Quotation added successfully", {
+//           position: "top-center",
+//         });
+//         // Add any additional logic or state updates upon successful submission
+//         // Reset input fields after successful submission
+//         setQuotation({
+//           quotation_name: "",
+//           fields: [{}],
+//         });
+//         navigate(`/print/${response.data.user.id}`);
+//       } else {
+//         // Show error message using cogo-toast
+//         cogoToast.error("Failed to add quotation", { position: "top-center" });
+//       }
+
+//       // Handle success, show a success message or redirect the user
+//       cogoToast.success("Quotation added successfully");
+//     } catch (error) {
+//       console.error("Error adding quotation:", error);
+//       // Handle error, show an error message
+//       cogoToast.error("Failed to add quotation");
+//     }
+//   };
+
+//   useEffect(() => {
+//     getServicelist();
+//   }, []);
+
+//   return (
+//     <>
+//       <div className="container mt-5">
+//         <div className="row mb-4 p-4 border-bottom">
+//           <div className="col-12">
+//             <h5 className="mb-4 text-center">
+//               Quotation Generator Management System:
+//             </h5>
+//             <div className="col-12 mb-3">
+//               <input
+//                 type="text"
+//                 className="form-control text-center"
+//                 id="quotationName"
+//                 aria-describedby="emailHelp"
+//                 name="quotation_name"
+//                 placeholder="Quotation Name"
+//                 onChange={(e) =>
+//                   setQuotation({
+//                     ...quotation,
+//                     [e.target.name]: e.target.value,
+//                   })
+//                 }
+//                 value={quotation.quotation_name}
+//                 required
+//               />
+//             </div>
+
+//             <div className="row">
+//               <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="serviceType">
+//                   Services
+//                 </label>
+//                 <select
+//                   className="form-select"
+//                   id="serviceType"
+//                   name="service_type"
+//                   onChange={(e) => handleChange(e)}
+//                   value={quotation.service_type}
+//                   required
+//                 >
+//                   <option value="">Select</option>
+//                   {serviceslist.map((item, key) => (
+//                     <option key={key} value={item.service_name}>
+//                       {item.service_name}
+//                     </option>
+//                   ))}
+//                 </select>
+//               </div>
+
+//               <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label
+//                   className="form-check-label"
+//                   htmlFor="serviceDescription"
+//                 >
+//                   Service Description
+//                 </label>
+//                 <textarea
+//                   type="text"
+//                   className="form-control"
+//                   id="serviceDescription"
+//                   name="service_description"
+//                   placeholder="Service Description"
+//                   onChange={(e) => handleChange(e)}
+//                   value={quotation.service_description}
+//                   required
+//                 />
+//               </div>
+
+//               <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="actualPrice">
+//                   Actual Price
+//                 </label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="actualPrice"
+//                   name="actual_price"
+//                   placeholder="Actual Price"
+//                   onChange={(e) => handleChange(e)}
+//                   value={quotation.actual_price}
+//                   required
+//                 />
+//               </div>
+//               <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//                 <label className="form-check-label" htmlFor="offerPrice">
+//                   Offer Price
+//                 </label>
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   id="offerPrice"
+//                   name="offer_price"
+//                   placeholder="Offer Price"
+//                   onChange={(e) => handleChange(e)}
+//                   value={quotation.offer_price}
+//                   required
+//                 />
+//               </div>
+//             </div>
+//             {/* {[...Array(fieldCount)].map((_, index) => (
+//   <div className="row" key={index}>
+//     {index !== 0 && (
+//       <>
+//         <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-3">
+//           <label
+//             className="form-check-label"
+//             htmlFor={`serviceType${index}`}
+//           >
+//             Services
+//           </label>
+//           <select
+//             className="form-select"
+//             id={`serviceType${index}`}
+//             name={`service_type${index}`}
+//             onChange={(e) => handleChange(e, index)}
+//             value={quotation.fields[index]?.service_type || ""}
+//             required
+//           >
+//             <option value="">Select</option>
+//             {serviceslist.map((item, key) => (
+//               <option key={key} value={item.service_name}>
+//                 {item.service_name}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+
+//         <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+//           <label
+//             className="form-check-label"
+//             htmlFor={`serviceDescription${index}`}
+//           >
+//             Service Description
+//           </label>
+//           <textarea
+//             type="text"
+//             className="form-control"
+//             id={`serviceDescription${index}`}
+//             name={`service_description${index}`}
+//             placeholder="Service Description"
+//             onChange={(e) => handleChange(e, index)}
+//             value={quotation.fields[index]?.service_description || ""}
+//             required
+//           />
+//         </div>
+
+//         <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//           <label
+//             className="form-check-label"
+//             htmlFor={`actualPrice${index}`}
+//           >
+//             Actual Price
+//           </label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             id={`actualPrice${index}`}
+//             name={`actual_price${index}`}
+//             placeholder="Actual Price"
+//             onChange={(e) => handleChange(e, index)}
+//             value={quotation.fields[index]?.actual_price || ""}
+//             required
+//           />
+//         </div>
+//         <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mb-3">
+//           <label
+//             className="form-check-label"
+//             htmlFor={`offerPrice${index}`}
+//           >
+//             Offer Price
+//           </label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             id={`offerPrice${index}`}
+//             name={`offer_price${index}`}
+//             placeholder="Offer Price"
+//             onChange={(e) => handleChange(e, index)}
+//             value={quotation.fields[index]?.offer_price || ""}
+//             required
+//           />
+//         </div>
+//       </>
+//     )}
+//   </div>
+// ))} */}
+
+//             <div className="row justify-content-end">
+//               <div className="col-1">
+//                 <button className="btn btn-success" onClick={AddNewField}>
+//                   +
+//                 </button>
+//               </div>
+//             </div>
+
+//             <form onSubmit={handleSubmit}>
+//               <div className="btn">
+//                 <button type="submit" className="btn btn-success">
+//                   Submit
+//                 </button>
+//               </div>
+//             </form>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Table;
