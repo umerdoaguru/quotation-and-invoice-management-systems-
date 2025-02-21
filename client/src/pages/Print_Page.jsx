@@ -217,8 +217,20 @@ function Print_Page() {
         {renderServiceTables("One Time", "Paid")}
         {renderServiceTables("Quarterly", "Paid")}
         {renderServiceTables("Half Yearly", "Paid")}
-        {renderServiceTables("Weekly", "Paid")}
         {renderServiceTables("As Per Requirement", "Paid")}
+        {renderServiceTables("1 Month", "Paid")}
+        {renderServiceTables("2 Months", "Paid")}
+        {renderServiceTables("3 Months", "Paid")}
+        {renderServiceTables("4 Months", "Paid")}
+        {renderServiceTables("5 Months", "Paid")}
+        {renderServiceTables("6 Months", "Paid")}
+        {renderServiceTables("7 Months", "Paid")}
+        {renderServiceTables("8 Months", "Paid")}
+        {renderServiceTables("9 Months", "Paid")}
+        {renderServiceTables("10 Months", "Paid")}
+        {renderServiceTables("11 Months", "Paid")}
+        {renderServiceTables("12 Months", "Paid")}
+        {renderServiceTables("Weekly", "Paid")}
         {renderServiceTables("15 Days", "Paid")}
         {renderServiceTables("10 Days", "Paid")}
         {renderServiceTables("1-5 Days", "Paid")}
@@ -235,8 +247,20 @@ function Print_Page() {
         {renderServiceTables("One Time", "Complimentary")}
         {renderServiceTables("Quarterly", "Complimentary")}
         {renderServiceTables("Half Yearly", "Complimentary")}
-        {renderServiceTables("Weekly", "Complimentary")}
         {renderServiceTables("As Per Requirement", "Complimentary")}
+        {renderServiceTables("1 Month", "Complimentary")}
+        {renderServiceTables("2 Months", "Complimentary")}
+        {renderServiceTables("3 Months", "Complimentary")}
+        {renderServiceTables("4 Months", "Complimentary")}
+        {renderServiceTables("5 Months", "Complimentary")}
+        {renderServiceTables("6 Months", "Complimentary")}
+        {renderServiceTables("7 Months", "Complimentary")}
+        {renderServiceTables("8 Months", "Complimentary")}
+        {renderServiceTables("9 Months", "Complimentary")}
+        {renderServiceTables("10 Months", "Complimentary")}
+        {renderServiceTables("11 Months", "Complimentary")}
+        {renderServiceTables("12 Months", "Complimentary")}
+        {renderServiceTables("Weekly", "Complimentary")}
         {renderServiceTables("15 Days", "Complimentary")}
         {renderServiceTables("10 Days", "Complimentary")}
         {renderServiceTables("1-5 Days", "Complimentary")}

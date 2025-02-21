@@ -323,7 +323,7 @@ function Final_quotation() {
 
               <ul>
                 {notes.map((note) => (
-                  <li key={note.id}>
+                  <li key={note.id} style={{ whiteSpace: "pre-line" }}>
                     {note.note_text}
                     <p>{note.additional_info}</p>
                   </li>

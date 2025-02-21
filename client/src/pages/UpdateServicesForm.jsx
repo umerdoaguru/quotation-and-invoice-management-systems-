@@ -151,10 +151,43 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => {
+    const userId = useSelector(state => state.auth.user.id);
+  
   const [
     services, setServices] = useState([]);
+      const [subscriptionFrequencies, setSubscriptionFrequencies] = useState([
+        "Yearly",
+        "Monthly",
+        "Quarterly",
+        "Half Yearly",
+        "One Time",
+        "As Per Requirement",
+        "1 Month",
+        "2 Months",
+        "3 Months",
+        "4 Months",
+        "5 Months",
+        "6 Months",
+        "7 Months",
+        "8 Months",
+        "9 Months",
+        "10 Months",
+        "11 Months",
+        "12 Months",
+        "15 Days",
+        "10 Days",
+        "Weekly",
+        "1-5 Days"
+       
+    
+      ]);
+      const [serviceslist, setServiceslist] = useState([]);
+        const [otherServices, setOtherServices] = useState(
+          Array(services.length).fill("")
+        );
 
   const fetchServices = async () => {
     try {
@@ -166,8 +199,19 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
     }
   };
 
+ const getServicelist = async () => {
+      try {
+        const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`);
+        console.log(res.data);
+        setServiceslist(res.data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
+   
     try {
       const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/quotation/${quotationId}`, {
         services,
@@ -216,8 +260,11 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
 }
 
 
+
+
   useEffect(() => {
     fetchServices();
+    getServicelist()
   }, [quotationId]);
 
   const handleUpdateClose = () =>{
@@ -246,7 +293,7 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
           </label>
           </div>
                  
-          <div className="col-lg-2 ">
+          {/* <div className="col-lg-2 ">
           <label className="form-check-label">
           Subscription:
 
@@ -258,10 +305,70 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
              
             />
           </label>
-          </div>
+          </div> */}
                  
             
-          <div className="col-lg-2 ">
+        
+
+          <div className="col-lg-2">
+                    <label className="form-check-label">
+                      Subscription:
+                      <select
+                        className="form-select"
+                        id={`subscriptionFrequency${index}`}
+                        name="subscription_frequency"
+                        onChange={(e) =>
+                          handleServiceChange(
+                            index,
+                            "subscription_frequency",
+                            e.target.value
+                          )
+                        }
+                        value={service.subscription_frequency}
+                        required
+                      >
+                        <option value="" disabled>
+                          Select Subscription Frequency
+                        </option>
+                        {subscriptionFrequencies.map((frequency, key) => (
+                          <option key={key} value={frequency}>
+                            {frequency}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  {/* <div className="col-lg-2">
+                    <label className="form-check-label">
+                      Service Name:
+                     
+                        <select
+                          className="form-select"
+                          id={`servicename${index}`}
+                          name="service_name"
+                          onChange={(e) =>  handleServiceChange(
+                            index,
+                            "service_name",
+                            e.target.value
+                          )}
+                          value={service.service_name}
+                          required
+                        >
+                          <option value="" disabled>
+                            Select Service name
+                          </option>
+                          {serviceslist.map((item, key) => (
+                            <option key={key} value={item.service_name}>
+                              {item.service_name}
+                            </option>
+                          ))}
+                        
+                        </select>
+                   
+                    </label>
+                 
+                  </div> */}
+                    <div className="col-lg-2 ">
           <label className="form-check-label">
             Service Name:
             <input
@@ -273,6 +380,8 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
             />
           </label>
           </div>
+
+
           <div className="col-lg-4 ">
 
           <label className="form-check-label">

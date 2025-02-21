@@ -32,9 +32,21 @@ const QuotationForm1 = () => {
     "Half Yearly",
     "One Time",
     "As Per Requirement",
-    "Weekly",
+    "1 Month",
+    "2 Months",
+    "3 Months",
+    "4 Months",
+    "5 Months",
+    "6 Months",
+    "7 Months",
+    "8 Months",
+    "9 Months",
+    "10 Months",
+    "11 Months",
+    "12 Months",
     "15 Days",
     "10 Days",
+    "Weekly",
     "1-5 Days"
    
 

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -6,9 +7,9 @@ import styled from "styled-components";
 const AddInvoiceServices = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [invoiceName, setInvoiceName] = useState("");
+  const [invoiceName, setInvoiceName] = useState('');
   const [serviceslist, setServiceslist] = useState([]);
-  const [otherServices, setOtherServices] = useState([""]);
+  const [otherServices, setOtherServices] = useState(['']);
   const [services, setServices] = useState([
     {
       service_type: "",
@@ -26,25 +27,20 @@ const AddInvoiceServices = () => {
     "Weekly",
   ]);
 
+
   const handleServiceChange = (index, field, value) => {
     const newServices = [...services];
     // newServices[index][field] = value;
-
-    if (field === "service_type" && value === "Complimentary") {
+     
+    if (field === 'service_type' && value === 'Complimentary') {
       // If the service type is 'Complimentary', disable the offer price and set it to 0
-      newServices[index]["offer_price"] = 0;
+      newServices[index]['offer_price'] = 0;
     }
-
-    if (
-      field === "offer_price" &&
-      newServices[index].service_type === "Complimentary"
-    ) {
+  
+    if (field === 'offer_price' && newServices[index].service_type === 'Complimentary') {
       // If the service type is 'Complimentary', set offer price to 0 and disable the input
       newServices[index][field] = 0;
-    } else if (
-      field === "offer_price" &&
-      value > newServices[index].actual_price
-    ) {
+    } else if (field === 'offer_price' && value > newServices[index].actual_price) {
       // If offer price is greater than actual price, set it to actual price and alert
       alert("Offer price cannot be greater than actual price");
       newServices[index][field] = newServices[index].actual_price;
@@ -61,7 +57,7 @@ const AddInvoiceServices = () => {
       {
         service_type: "",
         service_name: "",
-
+        
         actual_price: null,
         offer_price: null,
         subscription_frequency: "",
@@ -81,18 +77,21 @@ const AddInvoiceServices = () => {
     setOtherServices(newOtherServices);
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const servicesToSave = services.map((service, index) => {
+       
         return {
           service_name:
             service.service_name === "Other Service"
               ? otherServices[index]
               : service.service_name,
           service_type: service.service_type,
-
+         
           actual_price: service.actual_price,
           offer_price: service.offer_price,
           subscription_frequency: service.subscription_frequency,
@@ -107,12 +106,12 @@ const AddInvoiceServices = () => {
         }
       );
 
-      console.log("Invoice Services added successfully:", response.data);
+      console.log('Invoice Services added successfully:', response.data);
 
       navigate(`/final-invoice/${id}`);
     } catch (error) {
       console.error(
-        "Error adding invoice service:",
+        'Error adding invoice service:',
         error.response?.data || error.message
       );
     }
@@ -120,23 +119,19 @@ const AddInvoiceServices = () => {
 
   const getQuotationName = async () => {
     try {
-      const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice-name/${id}`
-      );
+      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-name/${id}`);
       setInvoiceName(response.data[0].invoice_name);
     } catch (error) {
-      console.log("Error fetching quotation name:", error);
+      console.log('Error fetching quotation name:', error);
     }
   };
 
   const getServicelist = async () => {
     try {
-      const res = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/services`
-      );
+      const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
       setServiceslist(res.data.services);
     } catch (error) {
-      console.log("Error fetching services list:", error);
+      console.log('Error fetching services list:', error);
     }
   };
 
@@ -147,30 +142,30 @@ const AddInvoiceServices = () => {
 
   const handleChange = (e, index) => {
     const newServices = [...services];
-    newServices[index]["service_name"] = e.target.value;
+    newServices[index]['service_name'] = e.target.value;
     setServices(newServices);
   };
 
   return (
+
     <Wrapper>
-      <Link
-        to={`/final-invoice/${id} `}
-        className="btn btn-success mx-3 mt-4 mb-2 "
-      >
-        <i className="bi bi-arrow-return-left mx-1"></i> Back
-      </Link>
+        
+      <Link to={`/final-invoice/${id} `} className="btn btn-success mx-3 mt-4 mb-2 ">
+            <i className="bi bi-arrow-return-left mx-1"></i> Back
+            </Link>
       <div className="container mt-3">
-        <div className="row">
-          <form className="form-control" onSubmit={handleSubmit}>
-            <h5 className="mb-4 text-center">
-              Add Services to Quotation: {invoiceName}
-            </h5>
-
-            {services.map((service, index) => (
+      <div className="row">
+        <form className="form-control" onSubmit={handleSubmit}>
+          <h5 className="mb-4 text-center">
+            Add Services to Quotation: {invoiceName}
+           
+          </h5>
+          
+          {services.map((service, index) => (
               <div key={index}>
-                <div className="row ">
+                <div className="row  gap-2">
                   <h6>Service {index + 1}</h6>
-
+                 
                   <div className="col-lg-2">
                     <label className="form-check-label">
                       Service Type:
@@ -263,11 +258,14 @@ const AddInvoiceServices = () => {
                         </select>
                       )}
                     </label>
+                 
                   </div>
+            
 
+                 
                   <div className="col-lg-2">
                     <label className="form-check-label">
-                      Actual Amt:
+                      Actual Price:
                       <input
                         type="number"
                         className="form-control"
@@ -285,7 +283,7 @@ const AddInvoiceServices = () => {
                   </div>
                   <div className="col-lg-2">
                     <label className="form-check-label">
-                      Amt:
+                      Offer Price:
                       <input
                         type="number"
                         className="form-control"
@@ -298,17 +296,6 @@ const AddInvoiceServices = () => {
                           )
                         }
                         required
-                      />
-                    </label>
-                  </div>
-                  <div className="col-lg-2">
-                    <label className="form-check-label">
-                      Remaining Amt:
-                      <input
-                        type="number"
-                        className="form-control"
-                        value={service.actual_price - service.offer_price || 0} // Calculate dynamically
-                        readOnly // Make it read-only since it’s calculated
                       />
                     </label>
                   </div>
@@ -325,31 +312,28 @@ const AddInvoiceServices = () => {
               </div>
             ))}
 
-            <button
-              type="button"
-              className="btn btn-success mt-2 mb-2"
-              onClick={addService}
-            >
-              Add Service
-            </button>
+          <button type="button" className="btn btn-success mt-2 mb-2" onClick={addService}>
+            Add Service
+          </button>
 
-            <button type="submit" className="btn btn-success mx-3 mt-2 mb-2">
-              Submit
-            </button>
-          </form>
-        </div>
+          <button type="submit" className="btn btn-success mx-3 mt-2 mb-2">
+            Submit
+          </button>
+        </form>
       </div>
+    </div>
     </Wrapper>
+  
   );
 };
 
 export default AddInvoiceServices;
 
 const Wrapper = styled.div`
-  .resp {
+ .resp{
+  width: 100%;
+  @media screen and (max-width: 768px) {
     width: 100%;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-    }
   }
+ }
 `;
