@@ -84,7 +84,7 @@ function FinalInvoice() {
   const handleUpdateSuccess = () => {
     console.log("Services updated successfully");
     setIsUpdateMode(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleUpdateError = () => {

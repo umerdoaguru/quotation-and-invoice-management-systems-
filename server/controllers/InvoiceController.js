@@ -984,6 +984,125 @@ const InvoiceupdateNote = async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 };
+const getAllInvoice = async (req, res) => {
+  try {
+   
+    const sql =
+      "SELECT * FROM invoice_data";
+
+    const invoices = await new Promise((resolve, reject) => {
+      db.query(sql,(err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    res.status(200).json(invoices);
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createUpdateInvoice = async (req, res) => {
+  try {
+    const {
+      invoice_name,
+      services,
+      invoice_no,
+      invoice_address,
+      payment_mode,
+      client_gst_no,
+      client_gst_per,
+      client_pan_no,
+      company_type,
+      invoice_date,
+      duration_start_date,
+      duration_end_date,
+    } = req.body;
+    const { user_id } = req.body; // Assuming user_id is retrieved from the authenticated user
+    
+
+    if (!invoice_name || !services || services.length === 0) {
+      return res
+        .status(400)
+        .json({ error: "Invoice name and Invoice services are required" });
+    }
+     const newInvoiceName = `Updated of ${invoice_name}`;
+
+    // Insert Invoice with user_id
+    const sqlInvoice =
+      "INSERT INTO invoice_data (invoice_name,  invoice_no, user_id,invoice_address,payment_mode,  client_gst_no,  client_gst_per, client_pan_no,company_type,invoice_date,duration_start_date, duration_end_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    const resultInvoice = await new Promise((resolve, reject) => {
+      db.query(
+        sqlInvoice,
+        [
+          newInvoiceName,
+          invoice_no,
+          user_id,
+          invoice_address,
+          payment_mode,
+          client_gst_no,
+          client_gst_per,
+          client_pan_no,
+          company_type,
+          invoice_date,
+          duration_start_date,
+          duration_end_date,
+        ],
+        (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+
+    // Get Invoice ID and name
+    const invoiceId = resultInvoice.insertId;
+   
+
+    // Insert services with the associated Invoice_id and Invoice_name
+    const sqlServices =
+      "INSERT INTO invoice_services_data (invoice_id,invoice_name,service_type,service_name,actual_price,offer_price,subscription_frequency) VALUES ?";
+    const servicesValues = services.map((service) => [
+      invoiceId,
+      newInvoiceName,
+      service.service_type,
+      service.service_name,
+      service.actual_price,
+      service.offer_price,
+      service.subscription_frequency,
+    ]);
+
+    await new Promise((resolve, reject) => {
+      db.query(sqlServices, [servicesValues], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Invoice and services added successfully",
+      invoice: {
+        id: invoiceId,
+        invoice_name: newInvoiceName,
+      },
+    });
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 module.exports = {
   createInvoice,
@@ -1008,5 +1127,5 @@ module.exports = {
   UpdateInvoice_No,
   UpdateInvoice_date,
   UpdateInvoice_start_date,
-  UpdateInvoice_end_date, getInvoiceDate
+  UpdateInvoice_end_date, getInvoiceDate,getAllInvoice,createUpdateInvoice
 };

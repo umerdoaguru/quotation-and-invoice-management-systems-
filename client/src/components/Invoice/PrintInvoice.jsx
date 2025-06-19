@@ -12,6 +12,8 @@ function PrintInvoice() {
   const [duration, setDuration] = useState(""); // Initialize with Monthly as default
   const [invoice, setInvoice] = useState([]);
   const [invoiceName, setInvoiceName] = useState("");
+  const [invoiceData, setInvoiceData] = useState([]);
+
   const [invoice_no, setInvoice_no] = useState("");
   const [invoiceDate, setInvoiceDate] = useState("");
   const [invoice_Start_Date, setInvoice_Start_Date] = useState("");
@@ -72,6 +74,8 @@ function PrintInvoice() {
           setInvoiceDate(data[0].invoice_date);
           setInvoice_Start_Date(data[0].duration_start_date);
           setInvoice_End_Date(data[0].duration_end_date);
+          setInvoiceData(data[0]);
+          
 
         } else {
           
@@ -430,35 +434,6 @@ useEffect(() => {
  
 }, []);
 
-const parsedInvoiceDate = moment(invoiceDate);
-
-// Add one day to the parsed date
-
-const adjustedInvoiceDate = parsedInvoiceDate.add(1, 'days');
-
-// Format the adjusted date as a string in the desired format (YYYY-MM-DD)
-const formattedAdjustedInvoiceDate = adjustedInvoiceDate.format('DD-MM-YYYY');
-
-
-
-const parsedInvoiceDateStart = moment(invoice_Start_Date);
-
-// Add one day to the parsed date
-const adjustedInvoiceDateStart = parsedInvoiceDateStart.add(1, 'days');
-
-// Format the adjusted date as a string in the desired format (YYYY-MM-DD)
-const formattedAdjustedInvoiceDateStart = adjustedInvoiceDateStart.format('DD-MM-YYYY');
-
-
-
-const parsedInvoiceDateEnd = moment(invoice_End_Date);
-
-// Add one day to the parsed date
-const adjustedInvoiceDateEnd = parsedInvoiceDateEnd.add(1, 'days');
-
-// Format the adjusted date as a string in the desired format (YYYY-MM-DD)
-const formattedAdjustedInvoiceDateEnd = adjustedInvoiceDateEnd.format('DD-MM-YYYY');
-
 
 const handleAddNotes = () => {
   navigate(`/invoicecreatenotes/${id}`);
@@ -535,12 +510,12 @@ const handleUpdateNotes = () => {
     Invoice No :- {invoice_no} <Link to={`/update-invoice-number/${id}`} className="btn-print"  >Edit</Link>
   </div>
   <div className="">
-    Invoice Date :- {formattedAdjustedInvoiceDate}  <Link to={`/update-invoice-date/${id}`}  className="btn-print" >Edit</Link>
+    Invoice Date :- {moment(invoiceDate).format('DD-MM-YYYY')}  <Link to={`/update-invoice-date/${id}`}  className="btn-print" >Edit</Link>
   </div>
 </div>
 <div className="d-flex justify-content-between th">
   <div className="th ">
-    Service Duration :- {formattedAdjustedInvoiceDateStart} <Link to={`/update-invoice-start-date/${id}`} className="btn-print" >Edit</Link>&nbsp; to {formattedAdjustedInvoiceDateEnd} <Link to={`/update-invoice-end-date/${id}`} className="btn-print" >Edit</Link>
+    Service Duration :- {moment(invoice_Start_Date).format('DD-MM-YYYY')} <Link to={`/update-invoice-start-date/${id}`} className="btn-print" >Edit</Link>&nbsp; to {moment(invoice_End_Date).format('DD-MM-YYYY')} <Link to={`/update-invoice-end-date/${id}`} className="btn-print" >Edit</Link>
   
   </div>
   <div className="">Payment Mode :- {paymentMode}</div>
@@ -679,7 +654,7 @@ const handleUpdateNotes = () => {
 
               <ul>
                 {notes.map((note) => (
-                  <li key={note.id} className="fw-bold " style={{lineHeight:"0.5rem",fontSize:"0.9rem"}}>
+                  <li key={note.id} className="fw-bold " style={{ whiteSpace: "pre-line"}}>
                     {note.note_text}
                     <p>{note.additional_info}</p>
                   </li>

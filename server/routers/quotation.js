@@ -8,7 +8,7 @@ const upload = require("../controllers/fileUploadController");
 const {  fetchcompanyname, company_name_header_footer, deleteCompanydata, CompanyDataUpload, updateCompanyData, getCompanydata, getcompany_name_data } = require("../controllers/Company_Data_Controller");
 const { register, login } = require("../controllers/UserRegitrationlLogin");
 const { createServiceList, getServicelist, deleteServicename, updateServiceList } = require("../controllers/ServicesList");
-const { createInvoice, getInvoice, deleteInvoice, UpdateInvoiceName, GetInvoiceName, invoiceserviceid, deleteServiceInvoice, addServicesInvoice, updateServicesInvoice, getInvoiceiddata, getInvoiceAddress, CompanyIncoiceData, fetchcompanyinvoicename, company_name_invoice_data, CopyInvoiceData, createNote, deleteInvoiceNote, getInvoiceNotes, createInvoiceNote, InvoiceNotes, InvoicegetNotes, InvoicedeleteNote, InvoiceupdateNote, UpdateInvoice_No, UpdateInvoice_date, UpdateInvoice_start_date, UpdateInvoice_end_date, getInvoiceDate } = require("../controllers/InvoiceController");
+const { createInvoice, getInvoice, deleteInvoice, UpdateInvoiceName, GetInvoiceName, invoiceserviceid, deleteServiceInvoice, addServicesInvoice, updateServicesInvoice, getInvoiceiddata, getInvoiceAddress, CompanyIncoiceData, fetchcompanyinvoicename, company_name_invoice_data, CopyInvoiceData, createNote, deleteInvoiceNote, getInvoiceNotes, createInvoiceNote, InvoiceNotes, InvoicegetNotes, InvoicedeleteNote, InvoiceupdateNote, UpdateInvoice_No, UpdateInvoice_date, UpdateInvoice_start_date, UpdateInvoice_end_date, getInvoiceDate, getAllInvoice, createUpdateInvoice } = require("../controllers/InvoiceController");
 
 
 
@@ -104,7 +104,8 @@ router.delete('/delete-notes/:noteId', InvoicedeleteNote);
 router.put('/invoice-update-notes', InvoiceupdateNote);
 
 
-
+router.get("/invoice-data", getAllInvoice);
+router.post("/invoice-after-edit", createUpdateInvoice);
 
 
 

@@ -78,6 +78,15 @@ const AddInvoiceServices = () => {
   };
 
 
+const handleCopyInvoice = async (invoiceId) => {
+    try {
+      const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-invoice/${invoiceId}`);
+      console.log(response.data.message);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error copying invoice:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,8 +114,10 @@ const AddInvoiceServices = () => {
           services: servicesToSave,
         }
       );
+      
 
       console.log('Invoice Services added successfully:', response.data);
+      await handleCopyInvoice(id)
 
       navigate(`/final-invoice/${id}`);
     } catch (error) {

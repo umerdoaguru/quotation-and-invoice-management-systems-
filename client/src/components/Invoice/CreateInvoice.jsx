@@ -13,6 +13,7 @@ const CreateInvoice = () => {
   const userId = useSelector((state) => state.auth.user.id);
   const navigate = useNavigate();
   const [invoiceName, setInvoiceName] = useState("");
+  const [invoicedata, setInvoicedata] = useState([]);
   const [invoiceAddress, setInvoiceAddress] = useState("");
   const [invoiceAdvancePayment, setInvoiceAdvancePayment] = useState("");
   const [invoiceClient_GST_no, setInvoiceClient_GST_no] = useState("");
@@ -179,6 +180,32 @@ const CreateInvoice = () => {
 
     fetchinvoice();
   }, [UserId]);
+  
+ useEffect(() => {
+  const fetchInvoiceDataById = async () => {
+    try {
+      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data`);
+      const data = response.data;
+
+      setInvoicedata(data);
+
+      if (data.length > 0) {
+        // Find the max invoice number
+        const maxInvoiceNo = Math.max(...data.map(inv => inv.invoice_no || 0));
+      setInvoice_no(maxInvoiceNo + 1);
+
+      } else {
+        setInvoice_no(1);  // First invoice if none exists
+      }
+
+    } catch (error) {
+      console.error("Error fetching invoice data:", error);
+    }
+  };
+
+  fetchInvoiceDataById();
+}, []);
+
 
   useEffect(() => {
     // Fetch existing data from the API
@@ -340,18 +367,8 @@ const CreateInvoice = () => {
                   <div className="col-lg-6"></div>
        
   
-              <div className="col-lg-3 mb-3">
-                <input
-                  type="text"
-                  className="form-control text-center"
-                  id="invoiceName"
-                  name="invoice_name"
-                  placeholder="Invoice Name"
-                  value={invoiceName}
-                  onChange={(e) => setInvoiceName(e.target.value)}
-                  required
-                />
-              </div>
+              
+
               <div className="col-lg-3 mb-3">
                 <input
                   type="number"
@@ -361,6 +378,20 @@ const CreateInvoice = () => {
                   placeholder="Invoice Number"
                   value={invoice_no}
                   onChange={(e) => setInvoice_no(e.target.value)}
+                  disabled
+                  required
+                />
+              </div>
+
+              <div className="col-lg-3 mb-3">
+                <input
+                  type="text"
+                  className="form-control text-center"
+                  id="invoiceName"
+                  name="invoice_name"
+                  placeholder="Invoice Name"
+                  value={invoiceName}
+                  onChange={(e) => setInvoiceName(e.target.value)}
                   required
                 />
               </div>

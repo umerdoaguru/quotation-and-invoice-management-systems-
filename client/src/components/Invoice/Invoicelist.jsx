@@ -219,7 +219,11 @@ const Invoicelist = () => {
                     <button className="btn btn-secondary m-1">Edit</button>
                   </Link>
                   <button className="btn btn-danger mx-sm-0 mx-lg-2 m-1" onClick={() => handleDelete(invoice.invoice_id)}>Delete</button>
-                  <button className="btn btn-primary m-1" onClick={() => handleCopyInvoice(invoice.invoice_id)}>Copy</button>
+                  <button className="btn btn-primary m-1" onClick={() => 
+                    
+                    
+                    
+                    handleCopyInvoice(invoice.invoice_id)}>Copy</button>
                 </td>
               </tr>
             ))}

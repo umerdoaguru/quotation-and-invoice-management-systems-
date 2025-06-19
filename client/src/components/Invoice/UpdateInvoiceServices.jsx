@@ -3,6 +3,8 @@ import axios from 'axios';
 const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) => {
     const [
       services, setServices] = useState([]);
+        const [invoiceData, setInvoiceData] = useState([]);
+      
   
     const fetchServices = async () => {
       try {
@@ -13,18 +15,49 @@ const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) =>
         console.error('Error fetching services:', error);
       }
     };
+     
+    
+  const getQuotationName = async () => {
+    try {
+      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-name/${invoiceId}`);
+      setInvoiceData(response.data[0]);
+      console.log(invoiceData.invoice_name);
+      
+    } catch (error) {
+      console.log('Error fetching quotation name:', error);
+    }
+  };
    
     const handleUpdate = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/invoice/${invoiceId}`, {
-          services,
+        const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/invoice-after-edit`, {
+       
+        
+          invoice_name: invoiceData.invoice_name,
+          invoice_no: invoiceData.invoice_no,
+          invoice_address: invoiceData.invoice_address,  
+          payment_mode: invoiceData.payment_mode,
+          client_gst_no: invoiceData.client_gst_no,
+          client_gst_per: invoiceData.client_gst_per,
+          client_pan_no: invoiceData.client_pan_no,
+          services: services,
+          user_id: invoiceData.user_id,
+          company_type: invoiceData.company_type,
+          invoice_date: invoiceData.invoice_date,
+          duration_start_date : invoiceData.duration_start_date,
+          duration_end_date : invoiceData.duration_end_date
+        
+
+          
+        }
   
-        });
+        );
         
   
         if (response.data.success) {
           console.log('Services updated successfully');
+      
           onUpdateSuccess();
         }
         
@@ -59,6 +92,7 @@ const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) =>
   
     useEffect(() => {
       fetchServices();
+      getQuotationName();
     }, [invoiceId]);
   
     const handleUpdateClose = () =>{

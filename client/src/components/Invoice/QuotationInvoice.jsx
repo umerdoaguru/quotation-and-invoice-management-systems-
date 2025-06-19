@@ -11,7 +11,7 @@ const QuotationInvoice = () => {
     services, setServices] = useState([]);
     const [quotationName, setQuotationName] = useState([]);
     const [invoiceAddress, setInvoiceAddress] = useState("");
-    
+      const [invoicedata, setInvoicedata] = useState([]);
   const [paymentmode, setpaymentmode] = useState([]);
   const [invoiceAdvancePayment, setInvoiceAdvancePayment] = useState("");
   const [invoiceGST_or_Pan, setInvoiceGST_or_Pan] = useState("");
@@ -70,6 +70,30 @@ const QuotationInvoice = () => {
 
     fetchCompanyData();
   },[selectedCompany] );
+  useEffect(() => {
+  const fetchInvoiceDataById = async () => {
+    try {
+      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data`);
+      const data = response.data;
+
+      setInvoicedata(data);
+
+      if (data.length > 0) {
+        // Find the max invoice number
+        const maxInvoiceNo = Math.max(...data.map(inv => inv.invoice_no || 0));
+        setInvoice_no(maxInvoiceNo + 1);  // Set next invoice number
+      } else {
+        setInvoice_no(1);  // First invoice if none exists
+      }
+
+    } catch (error) {
+      console.error("Error fetching invoice data:", error);
+    }
+  };
+
+  fetchInvoiceDataById();
+}, []);
+
 
 
   const handleServiceChange = (index, field, value) => {
@@ -220,6 +244,20 @@ const QuotationInvoice = () => {
                       </select>
                     </label>
                   </div>
+                  
+              <div className="col-lg-3 mb-3">
+                <input
+                  type="number"
+                  className="form-control text-center"
+                  id="invoice_no"
+                  name="invoice_no"
+                  placeholder="Invoice Number"
+                  value={invoice_no}
+                  onChange={(e) => setInvoice_no(e.target.value)}
+                  disabled
+                  required
+                />
+              </div>
            <div className="col-lg-3 mb-3">
               <input
                 type="text"

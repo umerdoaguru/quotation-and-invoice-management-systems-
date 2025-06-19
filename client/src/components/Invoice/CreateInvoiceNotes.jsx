@@ -44,7 +44,11 @@ const CreateInvoiceNotes = () => {
       console.error("Error storing notes:", error);
     }
   };
-
+  function autoResize(textarea) {
+    textarea.style.height = 'auto'; // Reset the height to auto first
+    textarea.style.height = textarea.scrollHeight + 'px'; // Set the height based on scrollHeight
+    textarea.style.overflow = 'hidden'; // is se overflow hide kr diya 
+  }
   return (
     <div className="container mt-5">
       <h2>Create New Notes</h2>
@@ -53,13 +57,21 @@ const CreateInvoiceNotes = () => {
 
     
       <div className="mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Enter a new note"
-          value={newNote}
-          onChange={(e) => setNewNote(e.target.value)}
-        />
+      <textarea
+        
+        className="form-control"
+        placeholder="Enter a new note"
+        spellCheck='true'
+        rows="3"
+        cols="90"
+        value={newNote}
+        onChange={(e) => {setNewNote(e.target.value);
+          autoResize(e.target);
+        }
+
+        }
+
+      />
         <button className="btn btn-primary mt-2" onClick={handleAddNote}>
           Add Note
         </button>
@@ -70,18 +82,18 @@ const CreateInvoiceNotes = () => {
         <div className="mb-3">
           <h5>Selected Notes:</h5>
           <ul>
-            {selectedNotes.map((note, index) => (
-              <li key={index}>
-                {note}{" "}
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleRemoveNote(index)}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
+  {selectedNotes.map((note, index) => (
+    <li key={index}>
+      <pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{note}</pre>
+      <button
+        className="btn btn-danger btn-sm ms-2"
+        onClick={() => handleRemoveNote(index)}
+      >
+        Remove
+      </button>
+    </li>
+  ))}
+</ul>
         </div>
       )}
 
