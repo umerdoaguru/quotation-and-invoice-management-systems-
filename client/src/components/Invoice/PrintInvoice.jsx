@@ -482,7 +482,7 @@ const handleUpdateNotes = () => {
               height={200}
               width={200}
               alt=""
-              style={{ marginTop: "-3rem" }}
+              style={{ marginTop: "0.5rem" }}
             />
           </div>
           <div className="details">
