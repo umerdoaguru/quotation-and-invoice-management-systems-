@@ -76,7 +76,17 @@ const CreateInvoice = () => {
       // If offer price is greater than actual price, set it to actual price and alert
       alert("Offer price cannot be greater than actual price");
       newServices[index][field] = newServices[index].actual_price;
-    } else {
+    }
+    else if (
+      field === "actual_price" &&
+      value < newServices[index].offer_price
+    ) {
+      // If actual price is less than aoffer price, set it to offer price and alert
+      alert("Actual price cannot be less than offer price");
+      newServices[index][field] = newServices[index].actual_price;
+    } 
+    
+    else {
       // Otherwise, update the field normally
       newServices[index][field] = value;
     }

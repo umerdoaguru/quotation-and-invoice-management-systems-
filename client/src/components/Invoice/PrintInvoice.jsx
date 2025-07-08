@@ -479,10 +479,9 @@ const handleUpdateNotes = () => {
           <div className="">
             <img
               src={companyLogo}
-              height={200}
-              width={200}
+             
               alt=""
-              style={{ marginTop: "0.5rem" }}
+              style={{ marginTop: "0.5rem", width:"13rem", height:"8rem"}}
             />
           </div>
           <div className="details">
