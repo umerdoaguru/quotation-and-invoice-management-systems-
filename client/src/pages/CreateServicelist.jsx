@@ -29,7 +29,7 @@ const CreateServicelist = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/create-servicelist/${userId}`, {
+      const response = await axios.post(`https://quotation-generator.dentalguru.software/api/create-servicelist/${userId}`, {
         services: services.filter(service => service.service_name.trim() !== ''), // Filter out empty services
       });
       console.log(response.data); // Log the response from the server

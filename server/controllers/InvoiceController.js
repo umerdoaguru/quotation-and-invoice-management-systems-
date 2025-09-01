@@ -680,7 +680,7 @@ const CompanyIncoiceData = async (req, res) => {
       charges,
     } = req.body;
 
-    const logoImagePath = "https://quotation.queuemanagementsystemdg.com/uploads/" + logo[0].filename;
+    const logoImagePath = "https://quotation-generator.dentalguru.software/uploads/" + logo[0].filename;
 
     // Insert header and footer images with the associated company_id
     const insertHeaderFooterImages = await new Promise((resolve, reject) => {

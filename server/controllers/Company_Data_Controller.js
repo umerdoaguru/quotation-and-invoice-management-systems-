@@ -27,11 +27,11 @@ const CompanyDataUpload = async (req, res) => {
     } = req.body;
 
     const headerImagePath =
-      "https://quotation.queuemanagementsystemdg.com/uploads/" + header_img[0].filename;
+      "https://quotation-generator.dentalguru.software/uploads/" + header_img[0].filename;
     const footerImagePath =
-      "https://quotation.queuemanagementsystemdg.com/uploads/" + footer_img[0].filename;
-    const logoImagePath = "https://quotation.queuemanagementsystemdg.com/uploads/" + logo[0].filename;
-    const DigitalsignImagePath = "https://quotation.queuemanagementsystemdg.com/uploads/" + digital_sign[0].filename;
+      "https://quotation-generator.dentalguru.software/uploads/" + footer_img[0].filename;
+    const logoImagePath = "https://quotation-generator.dentalguru.software/uploads/" + logo[0].filename;
+    const DigitalsignImagePath = "https://quotation-generator.dentalguru.software/uploads/" + digital_sign[0].filename;
 
     // Insert header and footer images with the associated company_id
     const insertHeaderFooterImages = await new Promise((resolve, reject) => {
@@ -252,11 +252,11 @@ const updateCompanyData = async (req, res) => {
     } = req.body;
 
     const headerImagePath =
-      "https://quotation.queuemanagementsystemdg.com/uploads/" + header_img[0].filename;
+      "https://quotation-generator.dentalguru.software/uploads/" + header_img[0].filename;
     const footerImagePath =
-      "https://quotation.queuemanagementsystemdg.com/uploads/" + footer_img[0].filename;
-      const logoImagePath = "https://quotation.queuemanagementsystemdg.com/uploads/" + logo[0].filename;
-      const DigitalsignImagePath = "https://quotation.queuemanagementsystemdg.com/uploads/" + digital_sign[0].filename;
+      "https://quotation-generator.dentalguru.software/uploads/" + footer_img[0].filename;
+      const logoImagePath = "https://quotation-generator.dentalguru.software/uploads/" + logo[0].filename;
+      const DigitalsignImagePath = "https://quotation-generator.dentalguru.software/uploads/" + digital_sign[0].filename;
   
 
     // Update header and footer images with the associated company_id

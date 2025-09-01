@@ -30,7 +30,7 @@ const CreateInvoiceNotes = () => {
     try {
       
       for (const note of selectedNotes) {
-        const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/invoice-notes", {
+        const response = await axios.post("https://quotation-generator.dentalguru.software/api/invoice-notes", {
           noteTexts: [note],
           invoiceId: id,
         });

@@ -132,7 +132,7 @@ const CreateInvoice = () => {
       });
 
       const response = await axios.post(
-        "https://quotation.queuemanagementsystemdg.com/api/create-invoice",
+        "https://quotation-generator.dentalguru.software/api/create-invoice",
         {
           invoice_name: invoiceName,
           invoice_no: invoice_no,
@@ -167,7 +167,7 @@ const CreateInvoice = () => {
   const getServicelist = async () => {
     try {
       const res = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`
+        `https://quotation-generator.dentalguru.software/api/servicelist/${userId}`
       );
       
       setServiceslist(res.data);
@@ -179,7 +179,7 @@ const CreateInvoice = () => {
   useEffect(() => {
     const fetchinvoice = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/company-data/${UserId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/company-data/${UserId}`);
         setCompany_data(response.data);
         
         console.log(response);
@@ -194,7 +194,7 @@ const CreateInvoice = () => {
  useEffect(() => {
   const fetchInvoiceDataById = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-data`);
       const data = response.data;
 
       setInvoicedata(data);
@@ -221,7 +221,7 @@ const CreateInvoice = () => {
     // Fetch existing data from the API
     const fetchCompanyData = async () => {
       try {
-        const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/company-header-footer', {
+        const response = await axios.post('https://quotation-generator.dentalguru.software/api/company-header-footer', {
           company_name: selectedCompany
         });
         

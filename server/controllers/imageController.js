@@ -69,7 +69,7 @@ const uploadImage = async (req, res) => {
       }
   
       // Construct the image path relative to the 'uploads' directory
-      const imagePath = 'https://quotation.queuemanagementsystemdg.com/uploads/' + file.filename;
+      const imagePath = 'https://quotation-generator.dentalguru.software/uploads/' + file.filename;
   
       // Insert image data into the database
       const insertImage = await new Promise((resolve, reject) => {
@@ -222,7 +222,7 @@ const updateHeaderImage = async (req, res) => {
     }
 
     // Construct the new image path relative to the 'uploads' directory
-    const newImagePath = 'https://quotation.queuemanagementsystemdg.com/uploads/' + file.filename;
+    const newImagePath = 'https://quotation-generator.dentalguru.software/uploads/' + file.filename;
 
     // Update the header image data in the database
     const updateHeaderImage = await new Promise((resolve, reject) => {
@@ -267,7 +267,7 @@ const updateFooterImage = async (req, res) => {
     }
 
     // Construct the new image path relative to the 'uploads' directory
-    const newImagePath = 'https://quotation.queuemanagementsystemdg.com/uploads/' + file.filename;
+    const newImagePath = 'https://quotation-generator.dentalguru.software/uploads/' + file.filename;
 
     // Update the header image data in the database
     const updateHeaderImage = await new Promise((resolve, reject) => {

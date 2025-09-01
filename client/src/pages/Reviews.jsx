@@ -24,7 +24,7 @@ function Reviews({ handleClose }) {
     try {
       const response = await axios.get(
         `
-        https://quotation.queuemanagementsystemdg.com/api/quotation/${id}`
+        https://quotation-generator.dentalguru.software/api/quotation/${id}`
       );
 
       if (response.status === 200) {
@@ -44,7 +44,7 @@ function Reviews({ handleClose }) {
     try {
       const response = await axios.get(
         `
-        https://quotation.queuemanagementsystemdg.com/api/notes/${id}`
+        https://quotation-generator.dentalguru.software/api/notes/${id}`
       );
 
       if (response.status === 200) {
@@ -58,7 +58,7 @@ function Reviews({ handleClose }) {
     try {
       const response = await axios.get(
         `
-        https://quotation.queuemanagementsystemdg.com/api/${id}/header`
+        https://quotation-generator.dentalguru.software/api/${id}/header`
       );
 
       if (response.status === 200) {

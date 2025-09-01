@@ -20,7 +20,7 @@ function FinalInvoice() {
   const fetchInvoices = async () => {
     try {
       const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`
+        `https://quotation-generator.dentalguru.software/api/invoice/${id}`
       );
 
       if (response.status === 200) {
@@ -63,7 +63,7 @@ function FinalInvoice() {
       try {
         // Make an API call to delete the service
         const response = await axios.delete(
-          `https://quotation.queuemanagementsystemdg.com/api/invoice-service/${serviceId}`
+          `https://quotation-generator.dentalguru.software/api/invoice-service/${serviceId}`
         );
 
         if (response.status === 200) {

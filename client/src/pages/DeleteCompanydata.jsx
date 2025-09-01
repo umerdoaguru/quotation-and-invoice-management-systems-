@@ -12,7 +12,7 @@ function DeleteCompanydata() {
   const handleDeleteCompanyData = async (CompanyName) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this Company data?");
    if(isConfirmed){ try {
-       const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/companydata', {
+       const response = await axios.post('https://quotation-generator.dentalguru.software/api/companydata', {
         company_name: CompanyName
       });
        
@@ -33,7 +33,7 @@ function DeleteCompanydata() {
         // Fetch company names from the backend
         const fetchCompanyNames = async () => {
           try {
-            const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/header-footer-images/company-names/${UserId}`);
+            const response = await axios.get(`https://quotation-generator.dentalguru.software/api/header-footer-images/company-names/${UserId}`);
             if (response.status === 200) {
               setCompanyNames(response.data); // Assuming response.data is an array of company names
        

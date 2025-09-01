@@ -7,14 +7,14 @@ const NotesTable = ({ quotationId }) => {
 
   useEffect(() => {
     // Fetch notes for the given quotationId
-    axios.get(`https://quotation.queuemanagementsystemdg.com/api/notes?quotationId=${quotationId}`)
+    axios.get(`https://quotation-generator.dentalguru.software/api/notes?quotationId=${quotationId}`)
       .then((response) => setNotes(response.data))
       .catch((error) => console.error('Error fetching notes:', error));
   }, [quotationId]);
 
   const handleAddNote = () => {
     // Add a new note
-    axios.post('https://quotation.queuemanagementsystemdg.com/api/notes', { noteText: newNote, quotationId })
+    axios.post('https://quotation-generator.dentalguru.software/api/notes', { noteText: newNote, quotationId })
       .then((response) => {
         setNotes([...notes, { id: response.data.id, note_text: newNote }]);
         setNewNote('');
@@ -24,7 +24,7 @@ const NotesTable = ({ quotationId }) => {
 
   const handleDeleteNote = (id) => {
     // Delete a note
-    axios.delete(`https://quotation.queuemanagementsystemdg.com/api/notes/${id}`)
+    axios.delete(`https://quotation-generator.dentalguru.software/api/notes/${id}`)
       .then(() => setNotes(notes.filter((note) => note.id !== id)))
       .catch((error) => console.error('Error deleting note:', error));
   };

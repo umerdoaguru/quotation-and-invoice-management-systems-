@@ -19,7 +19,7 @@ function MainUpdateCompanyData() {
         // Fetch company names from the backend
         const fetchCompanyNames = async () => {
           try {
-            const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/header-footer-images/company-names/${UserId}`);
+            const response = await axios.get(`https://quotation-generator.dentalguru.software/api/header-footer-images/company-names/${UserId}`);
             if (response.status === 200) {
               setCompanyNames(response.data); // Assuming response.data is an array of company names
                console.log(response);

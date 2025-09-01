@@ -34,7 +34,7 @@ const AddImageComponent = () => {
       const formData = new FormData();
       formData.append('image', selectedFile);
 
-      await axios.post(`https://quotation.queuemanagementsystemdg.com/api/${quotationId}/${imageType}`, formData);
+      await axios.post(`https://quotation-generator.dentalguru.software/api/${quotationId}/${imageType}`, formData);
 
       console.log('Image uploaded successfully');
     navigate(`/final-quotation/${quotationId}`);

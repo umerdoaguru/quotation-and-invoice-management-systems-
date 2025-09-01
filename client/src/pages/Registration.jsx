@@ -24,7 +24,7 @@ const Registration = () => {
     e.preventDefault();
     try{
       setLoading(true);
-      const res = await axios.post("https://quotation.queuemanagementsystemdg.com/api/register" , formData)
+      const res = await axios.post("https://quotation-generator.dentalguru.software/api/register" , formData)
       setLoading(false)
       console.log(res)
       if(res.data.success === true){

@@ -25,7 +25,7 @@ function Final_quotation() {
   const fetchQuotations = async () => {
     try {
       const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/quotation/${id}`
+        `https://quotation-generator.dentalguru.software/api/quotation/${id}`
       );
 
       if (response.status === 200) {
@@ -51,7 +51,7 @@ function Final_quotation() {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/notes/${id}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/notes/${id}`);
 
       if (response.status === 200) {
         setNotes(response.data);
@@ -99,7 +99,7 @@ function Final_quotation() {
       try {
         // Make an API call to delete the service
         const response = await axios.delete(
-          `https://quotation.queuemanagementsystemdg.com/api/services/${serviceId}`
+          `https://quotation-generator.dentalguru.software/api/services/${serviceId}`
         );
 
         if (response.status === 200) {

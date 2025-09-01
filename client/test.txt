@@ -142,7 +142,7 @@ this multiple filed code
 
 //   const getServicelist = async () => {
 //     try {
-//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       const res = await axios.get(`https://quotation-generator.dentalguru.software/api/services`);
 //       console.log(res.data.services);
 //       setServiceslist(res.data.services);
 //     } catch (error) {
@@ -166,7 +166,7 @@ this multiple filed code
 //     e.preventDefault();
 
 //     try {
-//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//       const response = await axios.post("https://quotation-generator.dentalguru.software/api/quotation", {
 //         quotations,
 //       });
 
@@ -380,7 +380,7 @@ this multiple filed code
 
 //   const getServicelist = async () => {
 //     try {
-//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       const res = await axios.get(`https://quotation-generator.dentalguru.software/api/services`);
 //       console.log(res.data.services);
 //       setServiceslist(res.data.services);
 //     } catch (error) {
@@ -400,8 +400,8 @@ this multiple filed code
 //     e.preventDefault();
 
 //     try {
-//       // Assuming your server is running at https://quotation.queuemanagementsystemdg.com/
-//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//       // Assuming your server is running at https://quotation-generator.dentalguru.software/
+//       const response = await axios.post("https://quotation-generator.dentalguru.software/api/quotation", {
 //         quotation_name: quotation.quotation_name,
 //         service_type: quotation.service_type,
 //         service_description: quotation.service_description,
@@ -677,7 +677,7 @@ this multiple filed code
 
 //   const getServicelist = async () => {
 //     try {
-//       const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+//       const res = await axios.get(`https://quotation-generator.dentalguru.software/api/services`);
 //       console.log(res.data.services);
 //       setServiceslist(res.data.services);
 //     } catch (error) {
@@ -711,7 +711,7 @@ this multiple filed code
 //     e.preventDefault();
 
 //     try {
-//       const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+//       const response = await axios.post("https://quotation-generator.dentalguru.software/api/quotation", {
 //         quotation_name: quotation.quotation_name,
 //         service_type: quotation.service_type,
 //         service_description: quotation.service_description,

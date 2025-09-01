@@ -22,7 +22,7 @@ const EditInvoice_no = () => {
 
         try {
           
-           const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/invoice-after-edit`, {
+           const response = await axios.post(`https://quotation-generator.dentalguru.software/api/invoice-after-edit`, {
        
         
           invoice_name: invoiceData.invoice_name,
@@ -64,7 +64,7 @@ const EditInvoice_no = () => {
         
   const getQuotationName = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-name/${id}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-name/${id}`);
       setInvoiceData(response.data[0]);
       
       
@@ -75,7 +75,7 @@ const EditInvoice_no = () => {
   const fetchInvoices = async () => {
     try {
       const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`
+        `https://quotation-generator.dentalguru.software/api/invoice/${id}`
       );
 
       if (response.status === 200) {

@@ -23,7 +23,7 @@ const EditInvoiceName = () => {
     const fetchQuotationName = async () => {
       try {
         const response = await axios.get(
-          `https://quotation.queuemanagementsystemdg.com/api/invoice-name/${id}`
+          `https://quotation-generator.dentalguru.software/api/invoice-name/${id}`
         );
         if (response.data && response.data.length > 0) {
           setNewName(response.data[0].invoice_name); // Set default value for input
@@ -50,7 +50,7 @@ const EditInvoiceName = () => {
     try {
       console.log(newcompany_type);
       const response = await axios.put(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice-data/${id}`,
+        `https://quotation-generator.dentalguru.software/api/invoice-data/${id}`,
         { newName, newAddress, newpaymentMode, newClient_GST_no,newClient_GST_per,newClient_Pan_no, newcompany_type }
       );
       if (response.status === 200) {

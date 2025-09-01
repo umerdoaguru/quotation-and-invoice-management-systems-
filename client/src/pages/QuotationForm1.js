@@ -135,7 +135,7 @@ const QuotationForm1 = () => {
         };
       });
 
-      const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/quotation", {
+      const response = await axios.post("https://quotation-generator.dentalguru.software/api/quotation", {
         quotation_name: quotationName,
         services: servicesToSave,
         user_id: userName,
@@ -154,7 +154,7 @@ const QuotationForm1 = () => {
 
   const getServicelist = async () => {
     try {
-      const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`);
+      const res = await axios.get(`https://quotation-generator.dentalguru.software/api/servicelist/${userId}`);
       console.log(res.data);
       setServiceslist(res.data);
     } catch (error) {

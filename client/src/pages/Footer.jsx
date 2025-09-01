@@ -12,7 +12,7 @@ function Footer({companyName }) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/company-header-footer', {
+        const response = await axios.post('https://quotation-generator.dentalguru.software/api/company-header-footer', {
           company_name: companyName
         });
 

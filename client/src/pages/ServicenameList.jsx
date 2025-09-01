@@ -10,7 +10,7 @@ function ServicenameList() {
 
     const fetchServicelist = async () =>{
         try {
-            const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`);
+            const response = await axios.get(`https://quotation-generator.dentalguru.software/api/servicelist/${userId}`);
             if (response.status === 200) {
                 SetServiceList(response.data)
             } 

@@ -56,7 +56,7 @@ function CreateInvoiceProfile() {
       formData.append('charges',companyCharge);
       formData.append('bank',companyBank);
   
-      const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/upload-invoice-profile', formData, {
+      const response = await axios.post('https://quotation-generator.dentalguru.software/api/upload-invoice-profile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

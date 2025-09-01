@@ -14,7 +14,7 @@
 //   useEffect(() => {
 //     const fetchQuotations = async () => {
 //       try {
-//         const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation-data/${UserId}`);
+//         const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation-data/${UserId}`);
 //         setQuotations(response.data);
 //         console.log(response);
 //       } catch (error) {
@@ -34,7 +34,7 @@
 //     if (isConfirmed) {
 //       try {
 //         const response = await axios.delete(
-//           `https://quotation.queuemanagementsystemdg.com/api/quotation/${id}`
+//           `https://quotation-generator.dentalguru.software/api/quotation/${id}`
 //         );
 
 //         if (response.status === 200) {
@@ -49,7 +49,7 @@
 
 //   const handleCopyQuotation = async (quotationId) => {
 //     try {
-//       const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-quotation/${quotationId}`);
+//       const response = await axios.post(`https://quotation-generator.dentalguru.software/api/copy-quotation/${quotationId}`);
 //       console.log(response.data.message);
 //       window.location.reload();
 //     } catch (error) {
@@ -129,7 +129,7 @@ const QuotationList = () => {
   }, [UserId]);
   const fetchQuotations = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation-data/${UserId}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation-data/${UserId}`);
       setQuotations(response.data);
       console.log(response);
     } catch (error) {
@@ -141,7 +141,7 @@ const QuotationList = () => {
     const isConfirmed = window.confirm("Are you sure you want to delete this quotation?");
     if (isConfirmed) {
       try {
-        const response = await axios.delete(`https://quotation.queuemanagementsystemdg.com/api/quotation/${id}`);
+        const response = await axios.delete(`https://quotation-generator.dentalguru.software/api/quotation/${id}`);
         if (response.status === 200) {
           console.log("Quotation deleted successfully");
         fetchQuotations();
@@ -154,7 +154,7 @@ const QuotationList = () => {
 
   const handleCopyQuotation = async (quotationId) => {
     try {
-      const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-quotation/${quotationId}`);
+      const response = await axios.post(`https://quotation-generator.dentalguru.software/api/copy-quotation/${quotationId}`);
       console.log(response.data.message);
       fetchQuotations();
       filteredQuotations()

@@ -31,7 +31,7 @@ const UpdateFooterImageForm = ({ quotationId }) => {
 
       
       const response = await axios.put(
-        `https://quotation.queuemanagementsystemdg.com/api/footer/${quotationId}`,
+        `https://quotation-generator.dentalguru.software/api/footer/${quotationId}`,
         formData,
       );
 

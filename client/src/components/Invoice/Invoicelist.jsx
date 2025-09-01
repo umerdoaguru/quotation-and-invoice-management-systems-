@@ -11,7 +11,7 @@
 //   useEffect(() => {
 //     const fetchinvoice = async () => {
 //       try {
-//         const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data/${UserId}`);
+//         const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-data/${UserId}`);
 //         setInvoice(response.data);
 //         console.log(response);
 //       } catch (error) {
@@ -32,7 +32,7 @@
 //     if (isConfirmed) {
 //       try {
 //         const response = await axios.delete(
-//           `https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`
+//           `https://quotation-generator.dentalguru.software/api/invoice/${id}`
 //         );
 
 //         if (response.status === 200) {
@@ -47,7 +47,7 @@
 
 //   const handleCopyInvoice = async (invoiceId) => {
 //     try {
-//       const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-invoice/${invoiceId}`);
+//       const response = await axios.post(`https://quotation-generator.dentalguru.software/api/copy-invoice/${invoiceId}`);
 //       console.log(response.data.message);
 //       window.location.reload();
 //     } catch (error) {
@@ -120,7 +120,7 @@ const Invoicelist = () => {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data/${UserId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-data/${UserId}`);
         setInvoices(response.data);
         console.log(response);
       } catch (error) {
@@ -135,7 +135,7 @@ const Invoicelist = () => {
     const isConfirmed = window.confirm("Are you sure you want to delete this invoice?");
     if (isConfirmed) {
       try {
-        const response = await axios.delete(`https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`);
+        const response = await axios.delete(`https://quotation-generator.dentalguru.software/api/invoice/${id}`);
         if (response.status === 200) {
           console.log("Invoice deleted successfully");
           window.location.reload();
@@ -148,7 +148,7 @@ const Invoicelist = () => {
 
   const handleCopyInvoice = async (invoiceId) => {
     try {
-      const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-invoice/${invoiceId}`);
+      const response = await axios.post(`https://quotation-generator.dentalguru.software/api/copy-invoice/${invoiceId}`);
       console.log(response.data.message);
       window.location.reload();
     } catch (error) {

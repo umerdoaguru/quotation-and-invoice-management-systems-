@@ -8,7 +8,7 @@ const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) =>
   
     const fetchServices = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice/${invoiceId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice/${invoiceId}`);
         setServices(response.data);
   
       } catch (error) {
@@ -19,7 +19,7 @@ const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) =>
     
   const getQuotationName = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-name/${invoiceId}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-name/${invoiceId}`);
       setInvoiceData(response.data[0]);
       console.log(invoiceData.invoice_name);
       
@@ -31,7 +31,7 @@ const UpdateInvoiceServices = ({ invoiceId, onUpdateSuccess, onUpdateError }) =>
     const handleUpdate = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/invoice-after-edit`, {
+        const response = await axios.post(`https://quotation-generator.dentalguru.software/api/invoice-after-edit`, {
        
         
           invoice_name: invoiceData.invoice_name,

@@ -13,7 +13,7 @@ function ReviewInvoice() {
   const fetchInvoice = async () => {
     try {
       const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`
+        `https://quotation-generator.dentalguru.software/api/invoice/${id}`
       );
 
       if (response.status === 200) {
@@ -29,7 +29,7 @@ function ReviewInvoice() {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-get-notes/${id}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-get-notes/${id}`);
   
       if (response.status === 200) {
         setNotes(response.data);

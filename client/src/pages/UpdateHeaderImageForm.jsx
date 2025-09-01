@@ -32,7 +32,7 @@ const UpdateHeaderImageForm = ({ quotationId }) => {
 
       
       const response = await axios.put(
-        `https://quotation.queuemanagementsystemdg.com/api/header/${quotationId}`,
+        `https://quotation-generator.dentalguru.software/api/header/${quotationId}`,
         formData,
 {
           headers: {

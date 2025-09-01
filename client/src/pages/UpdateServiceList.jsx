@@ -11,7 +11,7 @@ function UpdateServiceList() {
    
     const fetchServiceList = async () => {
         try {
-            const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`);
+            const response = await axios.get(`https://quotation-generator.dentalguru.software/api/servicelist/${userId}`);
             if (response.status === 200) {
                 setServices(response.data);
                 // Initialize updatedServices state with the fetched services
@@ -28,7 +28,7 @@ function UpdateServiceList() {
 
     const handleUpdate = async () => {
         try {
-            const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/servicelist`, {
+            const response = await axios.put(`https://quotation-generator.dentalguru.software/api/servicelist`, {
                 services: updatedServices,
             });
             if (response.data.success) {

@@ -31,7 +31,7 @@ const QuotationInvoice = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation/${id}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation/${id}`);
       setServices(response.data);
       setQuotationName(response.data[0].quotation_name);
      
@@ -43,7 +43,7 @@ const QuotationInvoice = () => {
     // Fetch existing data from the API
     const fetchCompanyData = async () => {
       try {
-        const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/company-header-footer', {
+        const response = await axios.post('https://quotation-generator.dentalguru.software/api/company-header-footer', {
           company_name: selectedCompany
         });
         
@@ -73,7 +73,7 @@ const QuotationInvoice = () => {
   useEffect(() => {
   const fetchInvoiceDataById = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-data`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-data`);
       const data = response.data;
 
       setInvoicedata(data);
@@ -126,7 +126,7 @@ const QuotationInvoice = () => {
   useEffect(() => {
     const fetchinvoice = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/company-data/${userId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/company-data/${userId}`);
         setCompany_data(response.data);
         
         console.log(response);
@@ -144,7 +144,7 @@ const QuotationInvoice = () => {
     try {
      
 
-      const response = await axios.post("https://quotation.queuemanagementsystemdg.com/api/create-invoice", {
+      const response = await axios.post("https://quotation-generator.dentalguru.software/api/create-invoice", {
         invoice_name: quotationName,
         invoice_no: invoice_no,
         invoice_address: invoiceAddress,

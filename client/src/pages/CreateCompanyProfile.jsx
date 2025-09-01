@@ -38,7 +38,7 @@ function CreateCompanyProfile() {
   useEffect(() => {
     const fetchinvoice = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/company-data/${UserId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/company-data/${UserId}`);
         setcompanydata(response.data);
         console.log(response);
       } catch (error) {
@@ -52,7 +52,7 @@ function CreateCompanyProfile() {
   const handleDeleteCompanyData = async (CompanyName) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this Company data?");
    if(isConfirmed){ try {
-       const response = await axios.post('https://quotation.queuemanagementsystemdg.com/api/companydata', {
+       const response = await axios.post('https://quotation-generator.dentalguru.software/api/companydata', {
         company_name: CompanyName
       });
        
@@ -109,7 +109,7 @@ function CreateCompanyProfile() {
       formData.append("digital_sign", companydigitalsign);
 
       const response = await axios.post(
-        "https://quotation.queuemanagementsystemdg.com/api/upload-company-profile",
+        "https://quotation-generator.dentalguru.software/api/upload-company-profile",
         formData,
         {
           headers: {

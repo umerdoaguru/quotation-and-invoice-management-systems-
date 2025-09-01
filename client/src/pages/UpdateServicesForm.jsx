@@ -7,7 +7,7 @@
 
 //   const fetchServices = async () => {
 //     try {
-//       const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation/${quotationId}`);
+//       const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation/${quotationId}`);
 //       setServices(response.data);
 
 //     } catch (error) {
@@ -18,7 +18,7 @@
 //   const handleUpdate = async (e) => {
 //     e.preventDefault();
 //     try {
-//       const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/quotation/${quotationId}`, {
+//       const response = await axios.put(`https://quotation-generator.dentalguru.software/api/quotation/${quotationId}`, {
 //         services,
 
 //       });
@@ -191,7 +191,7 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation/${quotationId}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation/${quotationId}`);
       setServices(response.data);
 
     } catch (error) {
@@ -201,7 +201,7 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
 
  const getServicelist = async () => {
       try {
-        const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${userId}`);
+        const res = await axios.get(`https://quotation-generator.dentalguru.software/api/servicelist/${userId}`);
         console.log(res.data);
         setServiceslist(res.data);
       } catch (error) {
@@ -213,7 +213,7 @@ const UpdateServicesForm = ({ quotationId, onUpdateSuccess, onUpdateError }) => 
     e.preventDefault();
    
     try {
-      const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/quotation/${quotationId}`, {
+      const response = await axios.put(`https://quotation-generator.dentalguru.software/api/quotation/${quotationId}`, {
         services,
 
       });

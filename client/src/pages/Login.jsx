@@ -32,7 +32,7 @@ function Login() {
     e.preventDefault();
     try{
       setLoading(true)
-      const res  = await axios.post("https://quotation.queuemanagementsystemdg.com/api/login", formData)
+      const res  = await axios.post("https://quotation-generator.dentalguru.software/api/login", formData)
       console.log(res)
       if(res.data.success === true){
         dispatch(loginUser(res.data.user)); 

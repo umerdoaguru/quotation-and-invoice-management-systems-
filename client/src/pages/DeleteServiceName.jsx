@@ -9,7 +9,7 @@ function DeleteServiceName() {
 
 const fetchServicelist = async () =>{
     try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${serviceId}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/servicelist/${serviceId}`);
         if (response.status === 200) {
             SetServiceList(response.data)
         } 
@@ -27,7 +27,7 @@ const isConfirmed = window.confirm("Are You Sure You Want to delete this Service
    if(isConfirmed){
 
     try {
-         const response = await axios.delete(`https://quotation.queuemanagementsystemdg.com/api/servicelist/${service_Id}`)
+         const response = await axios.delete(`https://quotation-generator.dentalguru.software/api/servicelist/${service_Id}`)
      if(response.status===200){
         console.log("Service Name Deleted successfully");
         fetchServicelist()

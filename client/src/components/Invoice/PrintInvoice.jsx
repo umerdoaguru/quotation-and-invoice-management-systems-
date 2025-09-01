@@ -55,7 +55,7 @@ function PrintInvoice() {
     const fetchInvoiceAddress = async () => {
       try {
         const response = await axios.get(
-          `https://quotation.queuemanagementsystemdg.com/api/invoice-address/${id}`
+          `https://quotation-generator.dentalguru.software/api/invoice-address/${id}`
         );
         console.log(response.data);
         if (response.status === 200) {
@@ -91,7 +91,7 @@ function PrintInvoice() {
   const fetchInvoice = async () => {
     try {
       const response = await axios.get(
-        `https://quotation.queuemanagementsystemdg.com/api/invoice/${id}`
+        `https://quotation-generator.dentalguru.software/api/invoice/${id}`
       );
       if (response.status === 200) {
    
@@ -327,7 +327,7 @@ const gstpercentagefull= invoiceClientGst_per
     try {
       // Make a POST request to fetch data for the selected company
       const response = await axios.post(
-        "https://quotation.queuemanagementsystemdg.com/api/company-name-data",
+        "https://quotation-generator.dentalguru.software/api/company-name-data",
         {
           company_name: companyType,
         }
@@ -416,7 +416,7 @@ const gstpercentagefull= invoiceClientGst_per
 
 const fetchNotes = async () => {
   try {
-    const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-get-notes/${id}`);
+    const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-get-notes/${id}`);
 
     if (response.status === 200) {
       setNotes(response.data);

@@ -14,7 +14,7 @@ const UpdateNotes = () => {
     // Fetch notes from the backend API
     const fetchNotes = async () => {
       try {
-        const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/notes/${id}`);
+        const response = await axios.get(`https://quotation-generator.dentalguru.software/api/notes/${id}`);
         setNotes(response.data);
       } catch (error) {
         console.error('Error fetching notes:', error);
@@ -28,7 +28,7 @@ const UpdateNotes = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/notes`, { notes });
+      const response = await axios.put(`https://quotation-generator.dentalguru.software/api/notes`, { notes });
 
       if (response.data.success) {
         console.log('Notes updated successfully');

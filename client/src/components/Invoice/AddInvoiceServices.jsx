@@ -80,7 +80,7 @@ const AddInvoiceServices = () => {
 
 const handleCopyInvoice = async (invoiceId) => {
     try {
-      const response = await axios.post(`https://quotation.queuemanagementsystemdg.com/api/copy-invoice/${invoiceId}`);
+      const response = await axios.post(`https://quotation-generator.dentalguru.software/api/copy-invoice/${invoiceId}`);
       console.log(response.data.message);
       window.location.reload();
     } catch (error) {
@@ -108,7 +108,7 @@ const handleCopyInvoice = async (invoiceId) => {
       });
 
       const response = await axios.post(
-        `https://quotation.queuemanagementsystemdg.com/api/add-invoice-services/${id}`,
+        `https://quotation-generator.dentalguru.software/api/add-invoice-services/${id}`,
         {
           invoice_name: invoiceName,
           services: servicesToSave,
@@ -130,7 +130,7 @@ const handleCopyInvoice = async (invoiceId) => {
 
   const getQuotationName = async () => {
     try {
-      const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/invoice-name/${id}`);
+      const response = await axios.get(`https://quotation-generator.dentalguru.software/api/invoice-name/${id}`);
       setInvoiceName(response.data[0].invoice_name);
     } catch (error) {
       console.log('Error fetching quotation name:', error);
@@ -139,7 +139,7 @@ const handleCopyInvoice = async (invoiceId) => {
 
   const getServicelist = async () => {
     try {
-      const res = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/services`);
+      const res = await axios.get(`https://quotation-generator.dentalguru.software/api/services`);
       setServiceslist(res.data.services);
     } catch (error) {
       console.log('Error fetching services list:', error);

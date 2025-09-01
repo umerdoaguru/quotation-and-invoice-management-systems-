@@ -14,7 +14,7 @@
 
 //     const fetchServices = async () => {
 //         try {
-//           const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation-name/${id}`);
+//           const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation-name/${id}`);
        
      
 //           setQuotationName(response.data[0].quotation_name);
@@ -33,7 +33,7 @@
 //         event.preventDefault();
 
 //         try {
-//             const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/quotation-data/${id}`, { newName });
+//             const response = await axios.put(`https://quotation-generator.dentalguru.software/api/quotation-data/${id}`, { newName });
 
 //             if (response.status === 200) {
 //                 setMessage(response.data.message);
@@ -102,7 +102,7 @@ const UpdateQuotationName = () => {
     useEffect(() => {
         const fetchQuotationName = async () => {
             try {
-                const response = await axios.get(`https://quotation.queuemanagementsystemdg.com/api/quotation-name/${id}`);
+                const response = await axios.get(`https://quotation-generator.dentalguru.software/api/quotation-name/${id}`);
                 if (response.data && response.data.length > 0) {
              
                     setNewName(response.data[0].quotation_name); // Set default value for input
@@ -118,7 +118,7 @@ const UpdateQuotationName = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.put(`https://quotation.queuemanagementsystemdg.com/api/quotation-data/${id}`, { newName });
+            const response = await axios.put(`https://quotation-generator.dentalguru.software/api/quotation-data/${id}`, { newName });
             if (response.status === 200) {
                 setMessage(response.data.message);
                 navigate('/quotationlist');
